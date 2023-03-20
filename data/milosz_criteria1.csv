@@ -1,0 +1,4 @@
+criterion_name,criterion_type,indifference,preference,veto,weight
+power,gain,0,0.000001,,3
+safety,gain,0,2,,2
+construction_cost,cost,100,300,,5
