@@ -3,13 +3,12 @@ import pandas as pd
 def validate_input(alternatives: pd.DataFrame, criteria: pd.DataFrame):
     alternatives_criteria_names = alternatives.columns[1:].tolist()
     criteria_names = criteria.iloc[:, 0].tolist()
-    # TODO: uncomment when the final dataset is to be used
-    # these are commented so that we can use small example datasets to verify calculations
-    # assert len(alternatives) >= 12, f"Too few alternatives - have {len(alternatives)}, need at least 12"
-    # assert len(alternatives) <= 50, f"Too many alternatives - have {len(alternatives)}, need at most 50"
 
-    # assert len(criteria_names) >= 4, f"Too few criteria - have {len(criteria_names)}, need at least 4"
-    # assert len(criteria_names) <= 9, f"Too many criteria - have {len(criteria_names)}, need at most 9"
+    assert len(alternatives) >= 12, f"Too few alternatives - have {len(alternatives)}, need at least 12"
+    assert len(alternatives) <= 50, f"Too many alternatives - have {len(alternatives)}, need at most 50"
+
+    assert len(criteria_names) >= 4, f"Too few criteria - have {len(criteria_names)}, need at least 4"
+    assert len(criteria_names) <= 9, f"Too many criteria - have {len(criteria_names)}, need at most 9"
 
     assert len(criteria_names) == len(alternatives_criteria_names), f"Different number of criteria in sources - {len(criteria_names)} in criteria df, {len(alternatives_criteria_names)} in alternative df"
 
