@@ -1,0 +1,5 @@
+criterion_name,criterion_type,indifference,preference,veto,weight
+scientific_activity,gain,5,15,25,40
+scientific_potential,gain,5,15,25,30
+material_effects,gain,5,15,25,25
+non-material_effects,gain,5,15,25,5
