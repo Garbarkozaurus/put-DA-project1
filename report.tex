@@ -17,39 +17,141 @@
 
     \item What is the source of the data?
 
+    The games' store pages on Steam and DM's judgement
+
     \item What is the point of view of the decision maker?
+
+    The decision maker is a person with a limited budget of time and money who has a particular taste in video games. They wish to find out what titles would be the best to sink their resources into.
 
     \item What is the number of alternatives considered? Were there more of them in the original data set?
 
+    15 alternatives are considered. Originally, there were 8 of them, because one of the author's wishlists contained only 8 games. The decision to include already owned games was a motivated by curiosity, the desire to have more informative results, and the need to have at least 12 alternatives in the data set.
+
+    % TODO: I'm unsure how to interpret "preferences".
+    % based on the document from lab1, "evaluations" refers to the values for all criteria (g_i)
+    % the same document gives some examples of preference information in MCDA, but I'm, as of yet, unsure
     \item Describe one of the alternatives considered (give its name, evaluations, specify preferences for this alternative)
 
+    \vbox{
+    Representation of one of the considered alternatives - the game "Nebuchadnezzar"
+        \begin{itemize}
+            \item Title: Nebuchadnezzar
+            \item Price: 71.99
+            \item \% of positive reviews: 81
+            \item Total number of reviews:1085
+            \item System requirements: 3
+            \item Content volume: 5
+            \item Gameplay: 8
+            \item Audio: 6
+            \item Graphics: 6
+            \item Position on wishlist: 1
+        \end{itemize}
+    }
+
+
     \item What is the number of criteria considered? Were there more of them in the original data set?
+
+    9 criteria are considered. There were 9 criteria in the original data set as well, since we created it ourselves.
 
     \item What is the origin of the various criteria?
     (catalog parameter / created by the decision maker - how?)
 
+    \verb|price| - full cost of the game, taken from its Steam store page (given in PLN, for Polish market)
+
+    \verb|positive_reviews_percentage|, \verb|number_of_reviews| - same Steam store page
+
+    \verb|system_requirements| - based on the information given on the Steam store page
+
+    \verb|content_volume|, \verb|gameplay|, \verb|audio|, \verb|graphics| - based on authors' personal judgements
+
+    \verb|position_on_wishlist| - position on one of the author's wishlists.
+    % TODO: (more like: to discuss) how the heck am I supposed to LIST THE VALUES??
     \item What are the domains of the individual criteria (discrete / continuous)? Note: in the case of continuous
     domains, specify the range of the criterion's variability, in the case of others: list the values. What is
     the nature (gain / cost) of the individual criteria?
+
+    % I would LOVE to use some fancy lingo to justify this
+    % something about "finite granularity" (economics?), or being able to map the price to groszes 1-1 by just *100...
+    All criteria are discrete (even \verb|price|).
+    \verb|price| - self explanatory. Minimum value in the data set: 0 (for "Path of Exile", a free to play game), maximum value: 249.00 ("ELDEN RING")
+    \verb|positive_reviews_percentage| - 0-100 scale.
+    \verb|system_requirements|, \verb|content_volume|, \verb|gameplay|, \verb|audio|, \verb|graphics| are all judged on a 1-10 scale.
+    \verb|position_on_wishlist| - 1 represents the top of the list (the most desired game). If already owned, set to 0 - this seemed to be a natural representation and it reflects the DM's preference for this title, which must hold, since they decided to purchase it already
+
 
     \item Are all criteria of equal importance (should they have the same ”weights”)? If not, can the relative
     importance of the criteria under consideration be expressed in terms of weights? In this case, estimate
     the weights of each criterion on a scale of 1 to 10. Are there any criteria among the criteria that are
     completely or almost invalid / irrelevant?
 
+    No, the criteria are not of equal importance. Here are the estimated criteria weights:
+    \begin{itemize}
+        \item \verb|price| 7
+        \item \verb|positive_reviews_percentage| 10
+        \item \verb|number_of_reviews| 5
+        \item \verb|system_requirements| 6
+        \item \verb|content_volume| 6
+        \item \verb|gameplay| 8
+        \item \verb|audio| 3
+        \item \verb|graphics| 4
+        \item \verb|wishlist_position| 6
+    \end{itemize}
+
+    The \verb|audio| and \verb|graphics| criteria are of particularly low importance. The authors do not consider them vital to a good experience, but rather additional means of enhancing it.
+
+    % TODO: will write a script to do that
     \item Are there dominated alternatives among the considered data set? If so, present all of them (dominating
     and dominated alternative), giving their names and values on the individual criteria.
 
     \item What should the theoretically best alternative look like in your opinion? Is it a small advantage on
     many criteria, or rather a strong advantage on few (but key) criteria? Which?
 
+    An alternative with strong performances on key criteria would be the most preferred. Especially on \verb|positive_reviews_percentage| and \verb|gameplay|, as that would indicate a game that is easy to enjoy.
+
     \item Which of the considered alternatives (provide name and values on individual criteria) seems to be the
     best / definitely better than the others? Is it determined by one reason (e.g. definitely the lowest
     price) or rather the overall value of the criteria? Does this alternative still have any weaknesses?
 
+    "Terraria" appears to be a strong candidate for the title of the best alternative.
+    It is very cheap for a full-priced video game in 2023, without sacrificing any qualities expected from an established title, while also being the most popular (by a wide margin) and exceptionally well received. It is also very light on system requirements due to its design choices, but it presents them very elegantly, leading to a decent score in graphics and an iconic soundtrack
+    \vbox{
+    \begin{itemize}
+        \item Title: Terraria
+        \item Price: 35.99
+        \item \% of positive reviews: 97
+        \item Total number of reviews: 880572
+        \item System requirements: 2
+        \item Content volume: 8
+        \item Gameplay: 8
+        \item Audio: 8
+        \item Graphics: 5
+        \item Position on wishlist: 0
+    \end{itemize}
+    }
+
     \item Which of the considered alternatives (provide name and values on individual criteria) seems to be the
     worst / definitely worse than the others? Is it determined by one reason (e.g. definitely the highest
     price), or rather the overall value of the criteria? Does this alternative still have any strengths?
+
+    The game "Gears Tactics" seems to be the worst. It is mostly due to being rather weak across the board, and doing particularly poorly on the cost type criteria (\verb|price| and \verb|system_requirements|).
+    The one redeeming quality are its comparatively good graphics.
+
+    \vbox{
+    \begin{itemize}
+        \item Title: Gears Tactics
+        \item Price: 142.99
+        \item \% of positive reviews: 75
+        \item Total number of reviews: 5873
+        \item System requirements: 8
+        \item Content volume: 5
+        \item Gameplay: 5
+        \item Audio: 4
+        \item Graphics: 7
+        \item Position on wishlist: 8
+    \end{itemize}
+    }
+
+
 
 \end{enumerate}
 
@@ -97,5 +199,7 @@
     adding blank cards, changing the value of threshold, boundaries or the $\lambda$ parameter)?
 
 \end{enumerate}
+
+\section{Comparing method results}
 
 \end{document}
