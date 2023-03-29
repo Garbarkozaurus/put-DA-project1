@@ -3,9 +3,10 @@
 \title{Decision Analysis report 1 - PROMETHEE I, PROMETHEE II, ELECTRE TRI-B}
 \usepackage{array}
 \usepackage{geometry}
-\geometry{lmargin=20pt, rmargin=20pt}
-
-
+\geometry{lmargin=35pt, rmargin=35pt}
+\usepackage{graphicx}
+\graphicspath{ {./figures/} }
+\usepackage{multicol}
 \begin{document}
 \maketitle
 
@@ -251,11 +252,10 @@
 
     % TODO: why, by the gods, is it not centered?
     % I know it is not ordered in any meaningful way, but that's what I got and I didn't feel that reordering everything would be worth the effort
-    
+
     \begin{center}
     \begin{table}[!ht]
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-        \hline
+        \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
             ~ & GT & FTL & DOS2 & T & N & BTD 6 & BiY & LE & SL & GD & RL 2 & P2 & ER & PoE & StS \\
             \hline
             \hline
@@ -273,19 +273,48 @@
             Portal 2 & P & P & P & ~ & P & P & P & P & P & ? & P & ~ & P & ? & P \\ \hline
             ELDEN RING & P & ~ & ~ & ~ & P & ~ & ~ & P & P & ~ & P & ~ & ~ & ~ & ~ \\ \hline
             Path of Exile & P & ? & P & ~ & P & ? & ? & P & P & ? & P & ? & P & ~ & ? \\ \hline
-            Slay the Spire & P & P & ? & ~ & P & ? & P & P & P & ? & P & ~ & P & ? & ~ \\ \hline
+            Slay the Spire & P & P & ? & ~ & P & ? & P & P & P & ? & P & ~ & P & ? & ~ \\
         \end{tabular}
     \end{table}
     \end{center}
 
+
+
     \item Compare the complete and partial ranking.
+
+        \begin{tabular}{cb{0.5\linewidth}}
+            \includegraphics[width=0.5\linewidth]{./figures/p1_partial.png} & \begin{enumerate}
+             \item [1.] Terraria
+             \item [2.] Portal 2
+             \item [3.] Geometry Dash
+             \item [4.] Path of Exile
+             \item [5.] Bloons TD 6
+             \item [6.] Slay the Spire
+             \item [7.] Baba Is You
+             \item [8.] FTL Faster Than Light
+             \item [9.] Divinity Original Sin 2
+             \item [10.] ELDEN RING
+             \item [11.] Superliminal
+             \item [12.] Rogue Legacy 2
+             \item [13.] Nebuchadnezzar
+             \item [14.] Last Epoch
+             \item [15.] Gears Tactics
+            \end{enumerate}
+        \end{tabular}
+
+        They correspond well to each other, as expected. The complete ranking doesn't capture the full complexity of the relationships, but it gives a faithful "summary" of the results.
 
     \item Comment on the compliance of the results with your expectations and preferences. Refer, among
     others, to to the results for the alternatives that you indicated as the best and worst during the data
     analysis. What operations were required to obtain the final result (e.g. changing the ranking of criteria,
     adding blank cards, changing the value of threshold)?
 
-\end{enumerate}
+    The results mostly comply with the expectations.
+    All 4 initial pairwise comparisons are satisfied. Personally, I'm surprised by the good performance of "Geometry Dash".
+    "Terraria" and "Gears Tactics" were good picks for the extreme alternatives - they clearly performed best and worst, respectively.
+    There were few changes to the criteria were made during the process. The thresholds for price were adjusted seeing how poorly some more expensive games were performing despite their other merits. The authors had disagreements about the ratings of particular games, those were the parameters that took the longest to settle down on.
+
+    \end{enumerate}
 
 % ==================
 
