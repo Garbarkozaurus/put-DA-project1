@@ -1,7 +1,7 @@
 \documentclass{article}
 \author{Marcin Gólski \and Piotr Kaszubski}
 \title{Decision Analysis report 1 - PROMETHEE I, PROMETHEE II, ELECTRE TRI-B}
-
+\usepackage{array}
 
 
 \begin{document}
@@ -99,9 +99,62 @@
 
     The \verb|audio| and \verb|graphics| criteria are of particularly low importance. The authors do not consider them vital to a good experience, but rather additional means of enhancing it.
 
-    % TODO: will write a script to do that
     \item Are there dominated alternatives among the considered data set? If so, present all of them (dominating
     and dominated alternative), giving their names and values on the individual criteria.
+
+    Yes, there are 3 dominated alternatives: "Last Epoch" (by "Divinity: Original Sin 2"), Gears Tactics (by "Path of Exile"), and "Superliminal" (dominated by both "Portal 2" and "Terraria")
+
+    \begin{center}
+        \begin{tabular}{ m{10em}|m{8em}|m{8em} }
+            Criterion & Last Epoch & Divinity: Original Sin 2 \\
+            \hline
+            \hline
+            Price & 161.99 & 161.99 \\
+            \% of positive reviews & 84 & 95 \\
+            Number of reviews & 15629 & 139068 \\
+            System requirements & 7 & 7 \\
+            Content volume & 9 & 9 \\
+            Gameplay & 9 & 9 \\
+            Audio & 6 & 9 \\
+            Graphics & 7 & 9 \\
+            Wishlist position & 7 & 0 \\
+        \end{tabular}
+    \end{center}
+
+
+    \begin{center}
+        \begin{tabular}{ m{10em}|m{8em}|m{8em} }
+            Criterion & Gears Tactics & Path of Exile \\
+            \hline
+            \hline
+            Price & 142.99 & 0 \\
+            \% of positive reviews & 75 & 87 \\
+            Number of reviews & 5873 & 197422 \\
+            System requirements & 8 & 7 \\
+            Content volume & 5 & 11 \\
+            Gameplay & 5 & 8 \\
+            Audio & 4 & 6 \\
+            Graphics & 7 & 7 \\
+            Wishlist position & 8 & 0 \\
+        \end{tabular}
+    \end{center}
+
+    \begin{center}
+        \begin{tabular}{ m{10em}|m{6em}|m{6em}|m{6em} }
+            Criterion & Superliminal & Portal 2  & Terraria\\
+            \hline
+            \hline
+            Price & 71.99 & 45.99 & 35.99 \\
+            \% of positive reviews & 94 & 99 & 97 \\
+            Number of reviews & 18197 & 336314 & 880572 \\
+            System requirements & 4 & 2 & 2\\
+            Content volume & 4 & 4 & 8 \\
+            Gameplay & 6 & 7 & 8 \\
+            Audio & 3 & 8 & 8 \\
+            Graphics & 5 & 6 & 5 \\
+            Wishlist position & 5 & 0 & 0 \\
+        \end{tabular}
+    \end{center}
 
     \item What should the theoretically best alternative look like in your opinion? Is it a small advantage on
     many criteria, or rather a strong advantage on few (but key) criteria? Which?
@@ -113,7 +166,7 @@
     price) or rather the overall value of the criteria? Does this alternative still have any weaknesses?
 
     "Terraria" appears to be a strong candidate for the title of the best alternative.
-    It is very cheap for a full-priced video game in 2023, without sacrificing any qualities expected from an established title, while also being the most popular (by a wide margin) and exceptionally well received. It is also very light on system requirements due to its design choices, but it presents them very elegantly, leading to a decent score in graphics and an iconic soundtrack
+    It is very cheap for a full-priced video game in 2023, without sacrificing any qualities expected from an established title, while also being the most popular (by a wide margin) and exceptionally well received. It is also very light on system requirements due to its design choices, but it presents them very elegantly, leading to a decent score in graphics and an iconic soundtrack.
     \vbox{
     \begin{itemize}
         \item Title: Terraria
