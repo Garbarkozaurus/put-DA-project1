@@ -2,6 +2,8 @@
 \author{Marcin Gólski \and Piotr Kaszubski}
 \title{Decision Analysis report 1 - PROMETHEE I, PROMETHEE II, ELECTRE TRI-B}
 \usepackage{array}
+\usepackage{geometry}
+\geometry{lmargin=20pt, rmargin=20pt}
 
 
 \begin{document}
@@ -32,8 +34,9 @@
     % the same document gives some examples of preference information in MCDA, but I'm, as of yet, unsure
     \item Describe one of the alternatives considered (give its name, evaluations, specify preferences for this alternative)
 
-    \vbox{
     Representation of one of the considered alternatives - the game "Nebuchadnezzar"
+
+    \vbox{
         \begin{itemize}
             \item Title: Nebuchadnezzar
             \item Price: 71.99
@@ -73,10 +76,14 @@
     % I would LOVE to use some fancy lingo to justify this
     % something about "finite granularity" (economics?), or being able to map the price to groszes 1-1 by just *100...
     All criteria are discrete (even \verb|price|).
+
     \verb|price| - self explanatory. Minimum value in the data set: 0 (for "Path of Exile", a free to play game), maximum value: 249.00 ("ELDEN RING")
+
     \verb|positive_reviews_percentage| - 0-100 scale.
+
     \verb|system_requirements|, \verb|content_volume|, \verb|gameplay|, \verb|audio|, \verb|graphics| are all judged on a 1-10 scale.
-    \verb|position_on_wishlist| - 1 represents the top of the list (the most desired game). If already owned, set to 0 - this seemed to be a natural representation and it reflects the DM's preference for this title, which must hold, since they decided to purchase it already
+
+    \verb|position_on_wishlist| - 1 represents the top of the list (the most desired game). If already owned, set to 0 - this seemed to be a natural representation and it reflects the DM's preference for this title, which must hold, since they decided to purchase it already.
 
 
     \item Are all criteria of equal importance (should they have the same ”weights”)? If not, can the relative
@@ -167,6 +174,7 @@
 
     "Terraria" appears to be a strong candidate for the title of the best alternative.
     It is very cheap for a full-priced video game in 2023, without sacrificing any qualities expected from an established title, while also being the most popular (by a wide margin) and exceptionally well received. It is also very light on system requirements due to its design choices, but it presents them very elegantly, leading to a decent score in graphics and an iconic soundtrack.
+
     \vbox{
     \begin{itemize}
         \item Title: Terraria
@@ -210,14 +218,65 @@
 
 % ==================
 
+\clearpage
+
 \section{Problem analysis with the use of PROMETHEE I and II}
 
 \begin{enumerate}
 
     \item Write the preferential information you provided at the input of the method.
 
+    Raw data available in \verb|./data/games_criteria.csv|
+
+    \begin{center}
+    \begin{tabular}{l|c|m{6em}|m{6em}|l}
+    Criterion & Type & Indifference threshold & Preference threshold & Weight \\
+    \hline
+    \hline
+    Price & cost & 10 & 20 & 7 \\
+    \% of positive reviews & gain & 5 & 10 & 10 \\
+    Number of reviews & gain & 100 & 10000 & 5 \\
+    System requirements & cost & 1 & 3 & 6 \\
+    Content volume & gain & 1 & 4 & 6 \\
+    Gameplay & gain & 2 & 5 & 8 \\
+    Audio & gain & 3 & 7 & 3 \\
+    Graphics & gain & 2 & 5 & 4 \\
+    Position on wishilist & cost & 0 & 3 & 6 \\
+
+    \end{tabular}
+    \end{center}
+
     \item Enter the final result obtained with the method. Usually, the first result is not the final one, you can
     slightly adjust the parameter values to your preferences.
+
+    % TODO: why, by the gods, is it not centered?
+    % I know it is not ordered in any meaningful way, but that's what I got and I didn't feel that reordering everything would be worth the effort
+    
+    \begin{center}
+    \begin{table}[!ht]
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+            ~ & GT & FTL & DOS2 & T & N & BTD 6 & BiY & LE & SL & GD & RL 2 & P2 & ER & PoE & StS \\
+            \hline
+            \hline
+            Gears Tactics & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ \\ \hline
+            FTL Faster Than Light & P & ~ & ? & ~ & P & ~ & ~ & P & P & ~ & P & ~ & P & ? & ~ \\ \hline
+            Divinity Original Sin 2 & P & ? & ~ & ~ & P & ~ & ? & P & P & ~ & P & ~ & P & ~ & ? \\ \hline
+            Terraria & P & P & P & ~ & P & P & P & P & P & P & P & P & P & P & P \\ \hline
+            Nebuchadnezzar & P & ~ & ~ & ~ & ~ & ~ & ~ & P & ~ & ~ & ? & ~ & ~ & ~ & ~ \\ \hline
+            Bloons TD 6 & P & P & P & ~ & P & ~ & P & P & P & ? & P & ~ & P & ? & ? \\ \hline
+            Baba Is You & P & P & ? & ~ & P & ~ & ~ & P & P & ? & P & ~ & P & ? & ~ \\ \hline
+            Last Epoch & P & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ~ & ? & ~ & ~ & ~ & ~ \\ \hline
+            Superliminal & P & ~ & ~ & ~ & P & ~ & ~ & P & ~ & ~ & P & ~ & ~ & ~ & ~ \\ \hline
+            Geometry Dash & P & P & P & ~ & P & ? & ? & P & P & ~ & P & ? & P & ? & ? \\ \hline
+            Rogue Legacy 2 & P & ~ & ~ & ~ & ? & ~ & ~ & ? & ~ & ~ & ~ & ~ & ~ & ~ & ~ \\ \hline
+            Portal 2 & P & P & P & ~ & P & P & P & P & P & ? & P & ~ & P & ? & P \\ \hline
+            ELDEN RING & P & ~ & ~ & ~ & P & ~ & ~ & P & P & ~ & P & ~ & ~ & ~ & ~ \\ \hline
+            Path of Exile & P & ? & P & ~ & P & ? & ? & P & P & ? & P & ? & P & ~ & ? \\ \hline
+            Slay the Spire & P & P & ? & ~ & P & ? & P & P & P & ? & P & ~ & P & ? & ~ \\ \hline
+        \end{tabular}
+    \end{table}
+    \end{center}
 
     \item Compare the complete and partial ranking.
 
@@ -230,6 +289,7 @@
 
 % ==================
 
+\clearpage
 \section{Problem analysis with the use of ELECTRE TRI-B}
 
 \begin{enumerate}
@@ -253,6 +313,7 @@
 
 \end{enumerate}
 
+\clearpage
 \section{Comparing method results}
 
 \end{document}
