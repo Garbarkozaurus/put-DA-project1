@@ -1,0 +1,6 @@
+title,price,positive_reviews_percentage,number_of_reviews,system_requirements,content_volume,gameplay,audio,graphics,wishlist_position
+Top Tier,0,100,1000000,1,10,10,10,10,0
+Top Tier,20,85,50000,3,4,7,5,5,4
+High Tier,50,70,10000,5,3,5,4,4,6
+Mid Tier,100,50,1000,7,2,3,2,2,8
+Low Tier,250,0,0,10,1,1,1,1,10
