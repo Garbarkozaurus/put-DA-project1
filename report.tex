@@ -69,7 +69,6 @@
     \verb|content_volume|, \verb|gameplay|, \verb|audio|, \verb|graphics| - based on authors' personal judgements
 
     \verb|position_on_wishlist| - position on one of the author's wishlists.
-    % TODO: (more like: to discuss) how the heck am I supposed to LIST THE VALUES??
     \item What are the domains of the individual criteria (discrete / continuous)? Note: in the case of continuous
     domains, specify the range of the criterion's variability, in the case of others: list the values. What is
     the nature (gain / cost) of the individual criteria?
@@ -242,7 +241,7 @@
     Gameplay & gain & 2 & 5 & 8 \\
     Audio & gain & 3 & 7 & 3 \\
     Graphics & gain & 2 & 5 & 4 \\
-    Position on wishilist & cost & 0 & 3 & 6 \\
+    Position on wishlist & cost & 0 & 3 & 6 \\
 
     \end{tabular}
     \end{center}
@@ -325,24 +324,255 @@
 
     \item Write the preferential information you provided at the input of the method.
 
+    Raw data loaded from \verb|./data/games_criteria.csv|, with weights updated
+    using the SRF method with the following card stack:
+    \begin{itemize}
+        \item \% of positive reviews
+        \item Gameplay
+        \item ---
+        \item Content volume
+        \item ---
+        \item ---
+        \item Number of reviews
+        \item wishlist\_position
+        \item ---
+        \item System requirements
+        \item Graphics
+        \item ---
+        \item ---
+        \item Price
+        \item ---
+        \item Audio
+    \end{itemize}
+    \begin{center}
+        \begin{tabular}{l|c|m{6em}|m{6em}|m{6em}|l}
+            Criterion & Type & Indifference threshold & Preference threshold & Veto & Weight \\
+            \hline
+            \hline
+            Price & cost & 10 & 20 & 50 & 0.045886 \\
+            \% of positive reviews & gain & 5 & 10 & 40 & 0.189873 \\
+            Number of reviews & gain & 100 & 10000 & 100000 & 0.123418 \\
+            System requirements & cost & 1 & 3 & 7 & 0.09019 \\
+            Content volume & gain & 1 & 4 & 6 & 0.156646 \\
+            Gameplay & gain & 2 & 5 & 7 & 0.178797 \\
+            Audio & gain & 3 & 7 & -- & 0.023734 \\
+            Graphics & gain & 2 & 5 & -- & 0.079114 \\
+            Position on wishlist & cost & 3 & 7 & -- & 0.023734 \\
+        \end{tabular}
+    \end{center}
+
+
+    There are 4 decision classes: Bottom, Mid, High and Top Tiers.
+
     \item Enter the final result obtained with the method. Usually, the first result is not the final one, you can
     slightly adjust the parameter values to your preferences.
+
+    \begin{tabular}{m{0.5\linewidth}m{0.5\linewidth}}
+        \subsection*{Pessimistic Assignment, $\lambda = 0.65$}
+        \begin{enumerate}
+            \item Top Tier
+                \begin{itemize}
+                    \item FTL Faster Than Light
+                    \item Baba Is You
+                    \item Bloons TD 6
+                    \item Geometry Dash
+                    \item Nebuchadnezzar
+                    \item Path of Exile
+                    \item Slay the Spire
+                    \item Terraria
+                    \item Superliminal
+                    \item Portal 2
+                \end{itemize}
+            \item High Tier
+                \begin{itemize}
+                    \item Rogue Legacy 2
+                    \item Gears Tactics
+                \end{itemize}
+            \item Mid Tier
+                \begin{itemize}
+                    \item Divinity Original Sin 2
+                    \item Last Epoch
+                \end{itemize}
+            \item Bottom Tier
+                \begin{itemize}
+                    \item ELDEN RING
+                \end{itemize}
+        \end{enumerate} &
+        \subsection*{Optimistic Assignment, $\lambda = 0.65$}
+        \begin{enumerate}
+            \item Top Tier
+                \begin{itemize}
+                    \item FTL Faster Than Light
+                    \item Baba Is You
+                    \item Bloons TD 6
+                    \item Geometry Dash
+                    \item Nebuchadnezzar
+                    \item Path of Exile
+                    \item Slay the Spire
+                    \item Terraria
+                    \item Superliminal
+                    \item Portal 2
+                    \item Rogue Legacy 2
+                    \item Divinity Original Sin 2
+                    \item Last Epoch
+                    \item ELDEN RING
+                \end{itemize}
+            \item High Tier
+                \begin{itemize}
+                    \item Gears Tactics
+                \end{itemize}
+            \item Mid Tier
+                \begin{itemize}
+                    \item <empty>
+                \end{itemize}
+            \item Bottom Tier
+                \begin{itemize}
+                    \item <empty>
+                \end{itemize}
+        \end{enumerate}
+    \end{tabular}
+
+
 
     \item Comment on the compliance of the results with your expectations and preferences. Refer, among
     others, to to the results for the alternatives that you indicated as the best and worst during the data
     analysis. What operations were required to obtain the final result (e.g. changing the ranking of criteria,
     adding blank cards, changing the value of threshold)?
 
+    Top Tier seems a bit too inflated in both cases. This could be
+    mitigated by adjusting the boundary to be less accessible, or adjusting
+    the weights (perhaps there is some pattern in the data that makes it
+    easy to fit everything into that one particular class).
+
+    The results are relatively pleasing -- especially the pessimistic
+    assignment. ELDEN RING sits at rock bottom, probably due to its
+    unfavorable price tag. A lot of more accessible games are above it. It
+    is a bit surprising that Divinity Original Sin 2 is only in the Mid
+    Tier, considering its incredibly high values on most criteria, except
+    the price.
+
+    We played with the threshold a bit to see if these results could be tweaked, but
+    there wasn't much observable difference -- I believe it's due to a lot
+    of these assignments being dictated by discordance.
+
     \item Compare the optimistic and pessimistic class assignments.
+
+    When moving from pessimistic to optimistic metric, most titles get
+    moved to the Top Tier. Interestingly, this happens to all alternatives
+    below High Tier, yet Gears Tactics stays in High Tier. Perhaps it loses
+    major points on one of the criterions, which successfully prevents it
+    from being promoted up.
 
     \item Comment on the compliance of the results with your expectations and preferences. Refer, among
     others, to to the results for the alternatives that you indicated as the best and worst during the data
     analysis. What operations were required to obtain the final result (e.g. changing the ranking of criteria,
     adding blank cards, changing the value of threshold, boundaries or the $\lambda$ parameter)?
 
+    Already answered in 3.
+
+    \item Second iteration of problem solving
+
+    Let's artificially assign low weights to everything except the price, to
+simulate a buyer motivated only by their wallet:
+
+\begin{center}
+    \begin{tabular}{l|c|m{6em}|m{6em}|m{6em}|l}
+        Criterion & Type & Indifference threshold & Preference threshold & Veto & Weight \\
+        \hline
+        \hline
+        Price & cost & 10 & 20 & 50 & 0.84 \\
+        \% of positive reviews & gain & 5 & 10 & 40 & 0.02 \\
+        Number of reviews & gain & 100 & 10000 & 100000 & 0.02 \\
+        System requirements & cost & 1 & 3 & 7 & 0.02 \\
+        Content volume & gain & 1 & 4 & 6 & 0.02 \\
+        Gameplay & gain & 2 & 5 & 7 & 0.02 \\
+        Audio & gain & 3 & 7 & -- & 0.02 \\
+        Graphics & gain & 2 & 5 & -- & 0.02 \\
+        Position on wishlist & cost & 3 & 7 & -- & 0.02 \\
+    \end{tabular}
+\end{center}
+
+\newpage
+The new grouping presents itself as follows:
+
+\begin{tabular}{m{0.5\linewidth}m{0.5\linewidth}}
+    \subsection*{Pessimistic Assignment, $\lambda = 0.65$}
+    \begin{enumerate}
+        \item Top Tier
+            \begin{itemize}
+                \item FTL Faster Than Light
+                \item Baba Is You
+                \item Geometry Dash
+                \item Path of Exile
+                \item Terraria
+                \item Bloons TD 6
+                \item Portal 2
+            \end{itemize}
+        \item High Tier
+            \begin{itemize}
+                \item Slay the Spire
+                \item Superliminal
+                \item Nebuchadnezzar
+            \end{itemize}
+        \item Mid Tier
+            \begin{itemize}
+                \item Rogue Legacy 2
+                \item Divinity Original Sin 2
+                \item Last Epoch
+                \item Gears Tactics
+            \end{itemize}
+        \item Bottom Tier
+            \begin{itemize}
+                \item ELDEN RING
+            \end{itemize}
+    \end{enumerate} &
+    \subsection*{Optimistic Assignment, $\lambda = 0.65$}
+    \begin{enumerate}
+        \item Top Tier
+            \begin{itemize}
+                \item FTL Faster Than Light
+                \item Divinity Original Sin 2
+                \item Baba Is You
+                \item ELDEN RING
+                \item Last Epoch
+                \item Geometry Dash
+                \item Path of Exile
+                \item Slay the Spire
+                \item Terraria
+                \item Bloons TD 6
+                \item Portal 2
+            \end{itemize}
+        \item High Tier
+            \begin{itemize}
+                \item Superliminal
+                \item Rogue Legacy 2
+                \item Nebuchadnezzar
+            \end{itemize}
+        \item Mid Tier
+            \begin{itemize}
+                \item Gears Tactics
+            \end{itemize}
+        \item Bottom Tier
+            \begin{itemize}
+                \item <empty>
+            \end{itemize}
+    \end{enumerate}
+\end{tabular}
+
+Now, these results aren't the same as sorting by price, because the veto
+thresholds operate independently from the comprehensive concordance index. That
+is why we still have some "unintuitive" assignments, like ELDEN RING being in
+the Top Tier despite being the most expensive alternative. This only proves that ELECTRE TRI-B is a flexible tool, but at the same time
+suffers from having many moving parts, all of which are the responsibility of
+the Decision Maker to tweak.
+
 \end{enumerate}
 
 \clearpage
 \section{Comparing method results}
+
+PROMETHEE I yielded the most satisfactory results. Its graph representation is intuitive and rich in information. The PROMETHEE methods also reacted very predictably to changes made to criteria and alternatives. The same was not true for ELECTRE - with so many knobs to turn, which were also a bit less obvious from a user's point of view, the changes sometimes brought about unforeseen consequences. This entire experiment demonstrated that the quality of the results greatly depends on DM's understanding of the algorithm itself, which can be problematic.
+
+By the nature of taking on different types of decision problems, the results of the methods are clearly different, but they don't contradict each other. Some alternatives were consistently favoured (Terraria, Path of Exile, Portal 2), while some (Gears Tactics, Last Epoch) did not receive similar praise.
 
 \end{document}
